@@ -94,6 +94,42 @@
 	[FIRApp configure];
 }
 
+//+ (void) logEventWithName:		(NSString *) 	name
+//parameters:		(NSDictionary *) 	parameters
+
+-(void)logEventWithName:(id)args{
+    ENSURE_UI_THREAD_1_ARG(args);
+    ENSURE_ARG_COUNT(args, 1);
+    
+    NSDictionary *dict = args[0];
+
+	NSString *name = dict[@"name"];
+	NSDictionary *pDict = dict[@"parameters"];
+	
+ 	[FIRAnalytics logEventWithName:name parameters:pDict];
+}
+
+//+ (void) setUserPropertyString:
+//(NSString *) 	value
+//forName:		(NSString *) 	name
++(void)setUserPropertyString:(id)args{
+    ENSURE_UI_THREAD_1_ARG(args);
+    ENSURE_ARG_COUNT(args, 1);
+    
+    NSDictionary *dict = args[0];
+
+	NSString *value = dict[@"value"];
+	NSString *name = dict[@"name"];
+	
+	NSLog(@"value=>%s", value);
+	NSLog(@"name=>%s", name);
+	
+	[FIRAnalytics setUserPropertyString:value
+		forName:name];
+}
+
+
+
 /* //example of json parse of params
 -(void)sendRequest:(id)args
 {

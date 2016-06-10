@@ -51,6 +51,12 @@
             ReferencedContainer = "container:ti-firebase.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRAnalyticsDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
