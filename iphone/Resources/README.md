@@ -4,7 +4,7 @@ Place your GoogleService-Info.plist in this folder and rebuild the project in or
 
 ===================
 
-Files in this folder are copied directory into the compiled product directory
+Files in this folder are copied directly into the compiled product directory
 when the iOS app is compiled:
 
     <project-dir>/build/iphone/build/Products/<Debug-iphonesimulator|Release-iphoneos>/<app name>.app/
