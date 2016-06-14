@@ -28,6 +28,8 @@
 		24DE9E1211C5FE74003F90F6 /* TiFirebaseModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* TiFirebase_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		C032E9961D0B554500B65DCB /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032E9941D0B554500B65DCB /* FirebaseAuth.framework */; };
+		C032E9971D0B554500B65DCB /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032E9951D0B554500B65DCB /* GoogleNetworkingUtilities.framework */; };
 		C0F28D701D0B0466000D17A6 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F28D6B1D0B0466000D17A6 /* FirebaseAnalytics.framework */; };
 		C0F28D711D0B0466000D17A6 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F28D6C1D0B0466000D17A6 /* FirebaseInstanceID.framework */; };
 		C0F28D721D0B0466000D17A6 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F28D6D1D0B0466000D17A6 /* GoogleInterchangeUtilities.framework */; };
@@ -54,6 +56,8 @@
 		24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseModuleAssets.m; path = Classes/TiFirebaseModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiFirebase_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C032E9941D0B554500B65DCB /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Resources/FirebaseAuth.framework; sourceTree = "<group>"; };
+		C032E9951D0B554500B65DCB /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Resources/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		C0F28D6B1D0B0466000D17A6 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Resources/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		C0F28D6C1D0B0466000D17A6 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Resources/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		C0F28D6D1D0B0466000D17A6 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Resources/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
@@ -68,7 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C032E9971D0B554500B65DCB /* GoogleNetworkingUtilities.framework in Frameworks */,
 				C0F28D741D0B0466000D17A6 /* GoogleUtilities.framework in Frameworks */,
+				C032E9961D0B554500B65DCB /* FirebaseAuth.framework in Frameworks */,
 				C0F28D701D0B0466000D17A6 /* FirebaseAnalytics.framework in Frameworks */,
 				C0F28D721D0B0466000D17A6 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				C0F28D731D0B0466000D17A6 /* GoogleSymbolUtilities.framework in Frameworks */,
@@ -102,6 +108,8 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C032E9941D0B554500B65DCB /* FirebaseAuth.framework */,
+				C032E9951D0B554500B65DCB /* GoogleNetworkingUtilities.framework */,
 				C0F28D751D0B0489000D17A6 /* Firebase.h */,
 				C0F28D6B1D0B0466000D17A6 /* FirebaseAnalytics.framework */,
 				C0F28D6C1D0B0466000D17A6 /* FirebaseInstanceID.framework */,

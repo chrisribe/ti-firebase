@@ -87,24 +87,58 @@
 }
 
 #pragma Public APIs
+//############## Internal Functions #################
+// Map error object to NSDictionary
+-(NSDictionary *)buildErrorDict:(NSError *)error{
+	if(error){
+		NSDictionary *errorDict = [
+			NSDictionary dictionaryWithObjects:@[
+				[NSNumber numberWithLong: error.code],
+				[NSString stringWithString:error.localizedDescription]
+			]
+			forKeys:@[
+				@"code",
+				@"description"
+			]
+		];
+		return(errorDict);
+	}else
+		return(nil);
+}
+// Map firebase user to NSDictionary
+-(NSDictionary *)buildUserDict:(FIRUser *_Nullable) user{
+	if(user){
+		NSDictionary *userDict = [
+			NSDictionary dictionaryWithObjects:@[
+				user.email, user.providerID, user.uid
+			]
+			forKeys:@[
+				@"email",
+				@"providerID",
+				@"uid"
+			]
+		];
+		return(userDict);
+	}else
+		return(nil);
+}
+//###############################
 
--(void)init:(id)args
-{
-	// Use Firebase library to configure APIs
+-(void)init:(id)args{
+	//Use Firebase library to configure APIs
 	[FIRApp configure];
 }
 
-//+ (void) logEventWithName:		(NSString *) 	name
-//parameters:		(NSDictionary *) 	parameters
+//+ (void) logEventWithName: (NSString *) name
+// parameters: (NSDictionary *) parameters
 
 -(void)logEventWithName:(id)args{
     ENSURE_UI_THREAD_1_ARG(args);
     ENSURE_ARG_COUNT(args, 1);
-    
     NSDictionary *dict = args[0];
 
-	NSString *name = dict[@"name"];
-	NSDictionary *pDict = dict[@"parameters"];
+	NSString *name = ([dict[@"name"] isKindOfClass:[NSString class]] ? dict[@"name"] : nil);
+	NSDictionary *pDict = (dict[@"parameters"] ? dict[@"parameters"] : [[[NSDictionary alloc] init] autorelease]);
 	
  	[FIRAnalytics logEventWithName:name parameters:pDict];
 }
@@ -115,38 +149,113 @@
 +(void)setUserPropertyString:(id)args{
     ENSURE_UI_THREAD_1_ARG(args);
     ENSURE_ARG_COUNT(args, 1);
-    
     NSDictionary *dict = args[0];
 
-	NSString *value = dict[@"value"];
-	NSString *name = dict[@"name"];
+	NSString *value = ([dict[@"value"] isKindOfClass:[NSString class]] ? dict[@"value"] : nil);
+	NSString *name = ([dict[@"name"] isKindOfClass:[NSString class]] ? dict[@"name"] : nil);
 	
-	NSLog(@"value=>%s", value);
-	NSLog(@"name=>%s", name);
-	
-	[FIRAnalytics setUserPropertyString:value
-		forName:name];
+	[FIRAnalytics setUserPropertyString:value forName:name];
 }
 
+/*
+[[FIRAuth auth]
+createUserWithEmail:email password:password
+ completion:^(FIRUser *_Nullable user, NSError *_Nullable error) {
+   // ...
+ }];
+*/
 
+-(void)createUserWithEmail:(id)args{
 
-/* //example of json parse of params
--(void)sendRequest:(id)args
-{
     ENSURE_UI_THREAD_1_ARG(args);
     ENSURE_ARG_COUNT(args, 1);
-    
     NSDictionary *dict = args[0];
-    
-    NSString *conversionId = dict[@"conversionId"];
-    NSString *label = dict[@"label"];
-    NSString *value = dict[@"value"];
-    NSNumber *isRepeatable = dict[@"isRepeatable"];
-    
-    NSLog(@"[INFO] Sending Adwords request: %@, %@, %@, %@", conversionId, label, value, isRepeatable);
-    
-    [ACTConversionReporter reportWithConversionID:conversionId label:label value:value isRepeatable:isRepeatable.boolValue];
+
+	NSString *email = ([dict[@"email"] isKindOfClass:[NSString class]] ? dict[@"email"] : nil);
+	NSString *password = ([dict[@"password"] isKindOfClass:[NSString class]] ? dict[@"password"] : nil);
+
+	KrollCallback *onSuccess = ([dict[@"success"] isKindOfClass:[KrollCallback class]] ? dict[@"success"] : nil);
+	KrollCallback *onError = ([dict[@"error"] isKindOfClass:[KrollCallback class]] ? dict[@"error"] : nil);
+
+	[[FIRAuth auth]
+    	createUserWithEmail:email
+		password:password
+		completion:^(FIRUser *_Nullable user, NSError *_Nullable error) {
+
+			if(onError != nil && error){
+				[onError call:@[[self buildErrorDict:error]] thisObject:nil];
+			}
+			else if(onSuccess != nil){
+				[onSuccess call:@[[self buildUserDict:user]] thisObject:nil];
+			}
+		}];
+
 }
+
+
+/*
+[[FIRAuth auth] signInWithEmail:email
+					password: password
+					completion:^(FIRUser *user, NSError *error) {
+                       // ...
+}];
+*/
+-(void)signInWithEmail:(id)args{
+
+    ENSURE_UI_THREAD_1_ARG(args);
+    ENSURE_ARG_COUNT(args, 1);
+    NSDictionary *dict = args[0];
+
+	NSString *email = ([dict[@"email"] isKindOfClass:[NSString class]] ? dict[@"email"] : nil);
+	NSString *password = ([dict[@"password"] isKindOfClass:[NSString class]] ? dict[@"password"] : nil);
+	
+	KrollCallback *onSuccess = ([dict[@"success"] isKindOfClass:[KrollCallback class]] ? dict[@"success"] : nil);
+	KrollCallback *onError = ([dict[@"error"] isKindOfClass:[KrollCallback class]] ? dict[@"error"] : nil);
+
+	[[FIRAuth auth] signInWithEmail:email
+		password: password
+		completion:^(FIRUser *user, NSError *error) {
+
+			if(onError != nil && error){
+				[onError call:@[[self buildErrorDict:error]] thisObject:nil];
+			}
+			else if(onSuccess != nil){
+				[onSuccess call:@[[self buildUserDict:user]] thisObject:nil];
+			}
+	}];
+}
+/*
+- signOut: (NSError *_Nullable *_Nullable) error
+Signs out the current user.
+*/
+-(void)signOut:(id)args{
+    ENSURE_UI_THREAD_1_ARG(args);
+    ENSURE_ARG_COUNT(args, 1);
+    NSDictionary *dict = args[0];
+
+	KrollCallback *onSuccess = ([dict[@"success"] isKindOfClass:[KrollCallback class]] ? dict[@"success"] : nil);
+	KrollCallback *onError = ([dict[@"error"] isKindOfClass:[KrollCallback class]] ? dict[@"error"] : nil);
+
+	NSError *error;
+	[[FIRAuth auth] signOut:&error];
+	if(!error && (onSuccess != nil)){
+		// Sign-out succeeded
+		[onSuccess call:@[@"success"] thisObject:nil];
+	}else if((onError != nil) && error){
+		//Here this error case occurs always after 1st signin success
+		//the generated error seems invalid. Set a simple "error" string for now.
+		//[self buildUserDict:user]
+		[onError call:@[@"error"] thisObject:nil];
+	}
+}
+
+/*
+NSDictionary *userInfo = @{
+  NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil)
+                          };
+NSError *cError = [NSError errorWithDomain:@"myDom"
+                                     code:-57
+                                 userInfo:userInfo];
 */
 
 @end
