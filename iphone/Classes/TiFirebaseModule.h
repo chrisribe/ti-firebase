@@ -8,5 +8,7 @@
 #import "TiModule.h"
 
 @interface TiFirebaseModule : TiModule
+{
+}
 
 @end
