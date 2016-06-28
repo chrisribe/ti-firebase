@@ -9,6 +9,8 @@
 #import "Firebase.h"
 
 @interface TiFirebaseModule : TiModule
+{
+}
 
 /**
  *  Use Firebase library to configure APIs.
