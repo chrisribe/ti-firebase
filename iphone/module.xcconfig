@@ -25,5 +25,6 @@
 //
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 // 
-FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/ti.firebase/1.0.0/Resources
+FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/ti.firebase/1.0.0/platform "~/Library/Application\ Support/Titanium/modules/iphone/ti.firebase/1.0.0/platform"
+
 OTHER_LDFLAGS=$(inherited) -framework FirebaseAnalytics -framework FirebaseInstanceID -framework GoogleInterchangeUtilities -framework GoogleSymbolUtilities -framework GoogleUtilities -framework FirebaseAuth -framework GoogleNetworkingUtilities
