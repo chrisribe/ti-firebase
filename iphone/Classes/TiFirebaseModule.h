@@ -31,7 +31,7 @@
  *
  *  @param args The arguments to define the user-property
  */
-+ (void)setUserPropertyString:(id)args;
+- (void)setUserPropertyString:(id)args;
 
 /**
  *  Creates and, on success, signs in a user with the given email address and password

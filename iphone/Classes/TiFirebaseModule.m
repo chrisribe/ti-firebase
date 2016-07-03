@@ -54,7 +54,7 @@
                         parameters:parameters];
 }
 
-+ (void)setUserPropertyString:(id)args
+- (void)setUserPropertyString:(id)args
 {
     ENSURE_UI_THREAD(setUserPropertyString, args);
     ENSURE_SINGLE_ARG(args, NSDictionary);
