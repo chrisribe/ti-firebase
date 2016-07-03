@@ -141,10 +141,7 @@
 		// Sign-out succeeded
 		[successCallback call:@[@"success"] thisObject:nil];
 	} else if(errorCallback && error) {
-		//Here this error case occurs always after 1st signin success
-		//the generated error seems invalid. Set a simple "error" string for now.
-		//[self buildUserDict:user]
-		[errorCallback call:@[@"error"] thisObject:nil];
+		[errorCallback call:@[[self dictionaryFromError:error]] thisObject:nil];
 	}
 }
 
