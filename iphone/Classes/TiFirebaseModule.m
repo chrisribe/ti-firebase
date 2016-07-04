@@ -173,22 +173,6 @@
     };
 }
 
-	KrollCallback *onSuccess = ([dict[@"success"] isKindOfClass:[KrollCallback class]] ? dict[@"success"] : nil);
-	KrollCallback *onError = ([dict[@"error"] isKindOfClass:[KrollCallback class]] ? dict[@"error"] : nil);
-
-	NSError *error;
-	[[FIRAuth auth] signOut:&error];
-	if(!error && (onSuccess != nil)){
-		// Sign-out succeeded
-		[onSuccess call:@[@"success"] thisObject:nil];
-	}else if((onError != nil) && error){
-		//Here this error case occurs always after 1st signin success
-		//the generated error seems invalid. Set a simple "error" string for now.
-		//[self buildUserDict:user]
-		[onError call:@[@"error"] thisObject:nil];
-	}
-}
-
 -(id)dbReference:(id)args{
 
 	return([[FIRDatabase database] reference]);
@@ -235,14 +219,5 @@ KrollCallback *remoteNotif_callback = nil;
   	[remoteNotif_callback call:@[userInfo] thisObject:nil];
   }
 }
-
-/*
-NSDictionary *userInfo = @{
-  NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil)
-                          };
-NSError *cError = [NSError errorWithDomain:@"myDom"
-                                     code:-57
-                                 userInfo:userInfo];
-*/
 
 @end
