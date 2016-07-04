@@ -173,4 +173,76 @@
     };
 }
 
+	KrollCallback *onSuccess = ([dict[@"success"] isKindOfClass:[KrollCallback class]] ? dict[@"success"] : nil);
+	KrollCallback *onError = ([dict[@"error"] isKindOfClass:[KrollCallback class]] ? dict[@"error"] : nil);
+
+	NSError *error;
+	[[FIRAuth auth] signOut:&error];
+	if(!error && (onSuccess != nil)){
+		// Sign-out succeeded
+		[onSuccess call:@[@"success"] thisObject:nil];
+	}else if((onError != nil) && error){
+		//Here this error case occurs always after 1st signin success
+		//the generated error seems invalid. Set a simple "error" string for now.
+		//[self buildUserDict:user]
+		[onError call:@[@"error"] thisObject:nil];
+	}
+}
+
+-(id)dbReference:(id)args{
+
+	return([[FIRDatabase database] reference]);
+}
+
+
+//========== Messaging =============
+/*
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+    fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  // If you are receiving a notification message while your app is in the background,
+  // this callback will not be fired till the user taps on the notification launching the application.
+  // TODO: Handle data of notification
+
+  // Print message ID.
+  NSLog(@"Message ID: %@", userInfo[@"gcm.message_id"]);
+
+  // Pring full message.
+  NSLog(@"%@", userInfo);
+}
+*/
+KrollCallback *remoteNotif_callback = nil;
+
+-(void)registerForRemoteNotifications:(id)args{
+    ENSURE_UI_THREAD_1_ARG(args);
+    ENSURE_ARG_COUNT(args, 1);
+    NSDictionary *dict = args[0];
+
+	remoteNotif_callback = ([dict[@"callback"] isKindOfClass:[KrollCallback class]] ? dict[@"callback"] : nil);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+    fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  // If you are receiving a notification message while your app is in the background,
+  // this callback will not be fired till the user taps on the notification launching the application.
+  // TODO: Handle data of notification
+
+  // Print message ID.
+  NSLog(@"Message ID: %@", userInfo[@"gcm.message_id"]);
+
+  // Pring full message.
+  NSLog(@"%@", userInfo);
+  if(remoteNotif_callback != nil){
+  	[remoteNotif_callback call:@[userInfo] thisObject:nil];
+  }
+}
+
+/*
+NSDictionary *userInfo = @{
+  NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil)
+                          };
+NSError *cError = [NSError errorWithDomain:@"myDom"
+                                     code:-57
+                                 userInfo:userInfo];
+*/
+
 @end
