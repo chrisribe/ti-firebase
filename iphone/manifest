@@ -15,4 +15,4 @@ name: ti-firebase
 moduleid: ti.firebase
 guid: 1dc51f4a-d89b-4df2-89da-278d5a246c90
 platform: iphone
-minsdk: 5.3.0.GA
+minsdk: 5.2.2.GA

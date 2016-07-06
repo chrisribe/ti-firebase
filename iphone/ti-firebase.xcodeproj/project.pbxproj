@@ -58,6 +58,8 @@
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C032E9941D0B554500B65DCB /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Resources/FirebaseAuth.framework; sourceTree = "<group>"; };
 		C032E9951D0B554500B65DCB /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Resources/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
+		C0EFC6361D2C22CA005C7B1C /* module.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = module.xcconfig; sourceTree = "<group>"; };
+		C0EFC6371D2C22CA005C7B1C /* manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest; sourceTree = "<group>"; };
 		C0F28D6B1D0B0466000D17A6 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Resources/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		C0F28D6C1D0B0466000D17A6 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Resources/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		C0F28D6D1D0B0466000D17A6 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Resources/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
@@ -135,6 +137,8 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C0EFC6361D2C22CA005C7B1C /* module.xcconfig */,
+				C0EFC6371D2C22CA005C7B1C /* manifest */,
 				AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */,
 				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
 			);
