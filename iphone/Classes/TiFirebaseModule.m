@@ -137,11 +137,13 @@
 	NSError *error;
 	[[FIRAuth auth] signOut:&error];
 	
-    if(!error && successCallback) {
+    if((error == nil) && successCallback) {
 		// Sign-out succeeded
 		[successCallback call:@[@"success"] thisObject:nil];
-	} else if(errorCallback && error) {
-		[errorCallback call:@[[self dictionaryFromError:error]] thisObject:nil];
+	} else if(errorCallback && (error != nil)) {
+		//<-- TBF: this callback crashes the calling app! why? returning string for now
+		//[errorCallback call:@[[self dictionaryFromError:error]] thisObject:nil];
+		[errorCallback call:@[@"error"] thisObject:nil];
 	}
 }
 
@@ -168,7 +170,7 @@
     
     return @{
         @"email": [user email],
-        @"providerID": [user providerData],
+        @"providerID": [user providerID],
         @"uid": [user uid]
     };
 }
