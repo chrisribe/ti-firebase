@@ -28,6 +28,10 @@
 		24DE9E1211C5FE74003F90F6 /* TiFirebaseModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* TiFirebase_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		C030487A1D33F60E005D8A19 /* TiFirebaseAuthModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C03048781D33F60E005D8A19 /* TiFirebaseAuthModule.h */; };
+		C030487B1D33F60E005D8A19 /* TiFirebaseAuthModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C03048791D33F60E005D8A19 /* TiFirebaseAuthModule.m */; };
+		C030487E1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C030487C1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h */; };
+		C030487F1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C030487D1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m */; };
 		C032E9961D0B554500B65DCB /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032E9941D0B554500B65DCB /* FirebaseAuth.framework */; };
 		C032E9971D0B554500B65DCB /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032E9951D0B554500B65DCB /* GoogleNetworkingUtilities.framework */; };
 		C0F28D701D0B0466000D17A6 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F28D6B1D0B0466000D17A6 /* FirebaseAnalytics.framework */; };
@@ -56,6 +60,10 @@
 		24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseModuleAssets.m; path = Classes/TiFirebaseModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiFirebase_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C03048781D33F60E005D8A19 /* TiFirebaseAuthModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiFirebaseAuthModule.h; path = Classes/TiFirebaseAuthModule.h; sourceTree = "<group>"; };
+		C03048791D33F60E005D8A19 /* TiFirebaseAuthModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseAuthModule.m; path = Classes/TiFirebaseAuthModule.m; sourceTree = "<group>"; };
+		C030487C1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiFirebaseAnalyticsModule.h; path = Classes/TiFirebaseAnalyticsModule.h; sourceTree = "<group>"; };
+		C030487D1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseAnalyticsModule.m; path = Classes/TiFirebaseAnalyticsModule.m; sourceTree = "<group>"; };
 		C032E9941D0B554500B65DCB /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Resources/FirebaseAuth.framework; sourceTree = "<group>"; };
 		C032E9951D0B554500B65DCB /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Resources/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		C0EFC6361D2C22CA005C7B1C /* module.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = module.xcconfig; sourceTree = "<group>"; };
@@ -126,6 +134,10 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C030487C1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h */,
+				C030487D1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m */,
+				C03048781D33F60E005D8A19 /* TiFirebaseAuthModule.h */,
+				C03048791D33F60E005D8A19 /* TiFirebaseAuthModule.m */,
 				24DE9E0F11C5FE74003F90F6 /* TiFirebaseModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* TiFirebaseModule.h */,
@@ -155,7 +167,9 @@
 				AA747D9F0F9514B9006C5449 /* TiFirebase_Prefix.pch in Headers */,
 				C0F28D761D0B0489000D17A6 /* Firebase.h in Headers */,
 				24DD6CF91134B3F500162E58 /* TiFirebaseModule.h in Headers */,
+				C030487A1D33F60E005D8A19 /* TiFirebaseAuthModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* TiFirebaseModuleAssets.h in Headers */,
+				C030487E1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +245,8 @@
 			files = (
 				24DD6CFA1134B3F500162E58 /* TiFirebaseModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* TiFirebaseModuleAssets.m in Sources */,
+				C030487F1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m in Sources */,
+				C030487B1D33F60E005D8A19 /* TiFirebaseAuthModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

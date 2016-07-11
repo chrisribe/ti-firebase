@@ -31,127 +31,69 @@
 	[super startup];
 	NSLog(@"[INFO] %@ loaded",self);
 }
+-(void)shutdown:(id)sender
+{
+	// this method is called when the module is being unloaded
+	// typically this is during shutdown. make sure you don't do too
+	// much processing here or the app will be quit forceably
 
-#pragma Public APIs
+	// you *must* call the superclass
+	[super shutdown:sender];
+}
 
-- (void)init:(id)unused
+#pragma mark Cleanup
+-(void)dealloc
+{
+	// release any resources that have been retained by the module
+    RELEASE_TO_NIL(firAuth);
+	RELEASE_TO_NIL(firAnalytics);
+	[super dealloc];
+}
+
+#pragma mark Internal Memory Management
+-(void)didReceiveMemoryWarning:(NSNotification*)notification
+{
+	// optionally release any resources that can be dynamically
+	// reloaded once memory is available - such as caches
+    RELEASE_TO_NIL(firAuth);
+	RELEASE_TO_NIL(firAnalytics);
+	[super didReceiveMemoryWarning:notification];
+}
+
+#pragma Public APIs (FIRApp Class entry point)
+
+- (void)configure:(id)unused
 {
     [FIRApp configure];
 }
 
-- (void)logEventWithName:(id)args
+
+#pragma Public APIs (FIRAuth Class entry point)
+
+-(TiFirebaseAuthModule*)FIRAuth
 {
-    ENSURE_UI_THREAD(logEventWithName, args);
-    ENSURE_SINGLE_ARG(args, NSDictionary);
-    
-    NSString *name;
-    NSDictionary *parameters;
-    
-    ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(parameters, args, @"parameter", NSDictionary);
-	
- 	[FIRAnalytics logEventWithName:name
-                        parameters:parameters];
+    if (firAuth==nil)
+    {
+        return [[[TiFirebaseAuthModule alloc] _initWithPageContext:[self executionContext]] autorelease];
+    }
+    return firAuth;
 }
 
-- (void)setUserPropertyString:(id)args
+#pragma Public APIs (FIRAnalytics Class entry point)
+-(TiFirebaseAnalyticsModule*)FIRAnalytics
 {
-    ENSURE_UI_THREAD(setUserPropertyString, args);
-    ENSURE_SINGLE_ARG(args, NSDictionary);
-    
-    NSString *value;
-    NSString *name;
-    
-    ENSURE_ARG_OR_NIL_FOR_KEY(value, args, @"value", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
-    
-	[FIRAnalytics setUserPropertyString:value
-                                forName:name];
+    if (firAnalytics==nil)
+    {
+        return [[[TiFirebaseAnalyticsModule alloc] _initWithPageContext:[self executionContext]] autorelease];
+    }
+    return firAnalytics;
 }
 
-- (void)createUserWithEmail:(id)args
-{
-    ENSURE_UI_THREAD(createUserWithEmail, args);
-    ENSURE_SINGLE_ARG(args, NSDictionary);
-    
-    NSString *email;
-    NSString *password;
-    KrollCallback *successCallback;
-    KrollCallback *errorCallback;
-    
-    ENSURE_ARG_OR_NIL_FOR_KEY(email, args, @"email", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(password, args, @"password", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
-    ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
-
-	[[FIRAuth auth] createUserWithEmail:email
-                               password:password
-                             completion:^(FIRUser *_Nullable user, NSError *_Nullable error) {
-                                 if(errorCallback && error) {
-                                        [errorCallback call:@[[self dictionaryFromError:error]] thisObject:nil];
-                                 } else if(successCallback) {
-                                     [successCallback call:@[[self dictionaryFromUser:user]] thisObject:nil];
-                                 }
-                             }];
-
-}
-
-- (void)signInWithEmail:(id)args
-{
-    ENSURE_UI_THREAD(signInWithEmail, args);
-    ENSURE_SINGLE_ARG(args, NSDictionary);
-    
-    NSString *email;
-    NSString *password;
-    KrollCallback *successCallback;
-    KrollCallback *errorCallback;
-    
-    ENSURE_ARG_OR_NIL_FOR_KEY(email, args, @"email", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(password, args, @"password", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
-    ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
-
-	[[FIRAuth auth] signInWithEmail:email
-                           password: password
-                         completion:^(FIRUser *user, NSError *error) {
-
-                            if(errorCallback && error) {
-                                [errorCallback call:@[[self dictionaryFromError:error]] thisObject:nil];
-                            } else if(successCallback) {
-                                [successCallback call:@[[self dictionaryFromUser:user]] thisObject:nil];
-                            }
-                         }];
-}
-
-- (void)signOut:(id)args
-{
-    ENSURE_UI_THREAD(signOut, args);
-    ENSURE_SINGLE_ARG(args, NSDictionary);
-    
-    KrollCallback *successCallback;
-    KrollCallback *errorCallback;
-    
-    ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
-    ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
-
-	NSError *error;
-	[[FIRAuth auth] signOut:&error];
-	
-    if((error == nil) && successCallback) {
-		// Sign-out succeeded
-		[successCallback call:@[@"success"] thisObject:nil];
-	} else if(errorCallback && (error != nil)) {
-		//<-- TBF: this callback crashes the calling app! why? returning string for now
-		//[errorCallback call:@[[self dictionaryFromError:error]] thisObject:nil];
-		[errorCallback call:@[@"error"] thisObject:nil];
-	}
-}
 
 #pragma mark Utilities
 
-- (NSDictionary *)dictionaryFromError:(NSError *)error
++ (NSDictionary *_Nullable)dictionaryFromError:(NSError *_Nullable)error
 {
-
     if (!error) {
         return nil;
     }
@@ -162,16 +104,18 @@
     };
 }
 
-- (NSDictionary *)dictionaryFromUser:(FIRUser *_Nullable) user
++ (NSDictionary *_Nullable)dictionaryFromUser:(FIRUser *_Nullable) user
 {
     if (!user) {
         return nil;
     }
-    
+
     return @{
         @"email": [user email],
         @"providerID": [user providerID],
-        @"uid": [user uid]
+        @"uid": [user uid],// Provider-specific UID
+		@"photoURL": ([user photoURL].absoluteString ?: [NSNull null]),
+		@"displayName": ([user displayName] ?: [NSNull null])
     };
 }
 
