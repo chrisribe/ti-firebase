@@ -24,7 +24,7 @@ _tFireb.FIRAuth.createUserWithEmail({
 });
 ```
 
-*signInWithEmail*
+**signInWithEmail**
 ```
 var email = _v.email_f.value;
 var pwd = _v.pwd_f.value;
@@ -40,7 +40,7 @@ _tFireb.FIRAuth.signInWithEmail({
 });
 ```
 
-*signOut*
+**signOut**
 ```
 _tFireb.FIRAuth.signOut({
 	'success': function(data){	
@@ -52,7 +52,7 @@ _tFireb.FIRAuth.signOut({
 });
 ```
 
-*logEventWithName*
+**logEventWithName**
 ```
 _tFireb.FIRAnalytics.logEventWithName({
 	‘name’: ‘xyz’,
