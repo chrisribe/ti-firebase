@@ -34,11 +34,22 @@
     ENSURE_SINGLE_ARG(args, NSDictionary);
     
     NSString *name;
-    NSDictionary *parameters;
+    NSMutableDictionary *parameters;
     
     ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
-    ENSURE_ARG_OR_NIL_FOR_KEY(parameters, args, @"parameters", NSDictionary);
-	
+    ENSURE_ARG_OR_NIL_FOR_KEY(parameters, args, @"parameters", NSMutableDictionary);
+
+	//Convert numerical parameters to NSNumber (firebase expects numbers not string numbers)
+	NSNumberFormatter *nFormatter = [[NSNumberFormatter alloc] init];
+	nFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+
+	NSArray *keysCopy = [[parameters allKeys] copy];
+	for (NSString *key in keysCopy) {
+		NSNumber *strNumber = [nFormatter numberFromString:[parameters valueForKey:key]];
+		if(strNumber != nil)//if a number was converted from string then not nil
+			[parameters setValue:strNumber forKey:key];//<- update dict to number!
+	}
+
  	[FIRAnalytics logEventWithName:name
                         parameters:parameters];
 }
