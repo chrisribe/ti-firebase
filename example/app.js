@@ -111,7 +111,7 @@ function initUI(v){
 
 	v.eParams_lbl = Titanium.UI.createLabel({
 		top: 6, left: 6,
-		text:'Event parameters key/values (comma seperated)',
+		text:'Parameters key/values (pipe seperated "|")',
 		color:'lightgray',
 		width: Ti.UI.SIZE, height: Ti.UI.SIZE
 	});
@@ -122,7 +122,7 @@ function initUI(v){
 	v.evtBox_v.add(v.evtKeys_f);
 	
 	v.evtValues_f = Ti.UI.createTextField(tFieldProps);
-	v.evtValues_f.hintText = 'Values';
+	v.evtValues_f.hintText = 'Values (use comma for float values)';
 	v.evtBox_v.add(v.evtValues_f);
 
 	v.logEventBtn = Ti.UI.createButton({
@@ -193,8 +193,8 @@ function logEventWithNameCb(e){
 	var keys = _v.evtKeys_f.value;
 	var values = _v.evtValues_f.value;
 	//build key value for parameters
-	var aKeys = keys.split(',');
-	var aVals = values.split(',');
+	var aKeys = keys.split('|');
+	var aVals = values.split('|');
 	if(aKeys.length == 0 || (aKeys.length != aVals.length)){
 		alert('Event key/values count does not match!');
 		return;
