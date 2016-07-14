@@ -1,7 +1,7 @@
 /**
- * ti-firebase auth module
+ * ti-firebase FIRAuth
  *
- * Created by Your Name
+ * Created by cribe
  * Copyright (c) 2016 Your Company. All rights reserved.
  */
 
@@ -17,7 +17,7 @@
  *
  *  @param args The arguments to define the log
  */
-- (void)logEventWithName:(id)args;
+- (void)logEventWithName:(id )args;
 
 /**
  *  Sets a user property to a given value

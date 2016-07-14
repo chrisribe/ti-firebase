@@ -1,5 +1,5 @@
 /**
- * ti-firebase
+ * ti-firebase FIRAuth
  *
  * Created by Your Name
  * Copyright (c) 2016 Your Company. All rights reserved.

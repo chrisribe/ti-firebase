@@ -3,3 +3,14 @@ xcsettings
 xcuserdata
 
 *.plist
+
+# Build folder and log file
+bin/
+build/
+android/libs
+android/documentation
+android/example
+android/assets
+android/LICENSE
+iphone/build/
+build.log
