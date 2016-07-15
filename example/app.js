@@ -25,8 +25,6 @@ function initUI(v){
 		textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 		height: 30, width: Ti.UI.FILL
 	};
-	
-	
 	v.self = Ti.UI.createScrollView({
 		top:20, left: 0,
 		layout: 'vertical',
@@ -39,7 +37,7 @@ function initUI(v){
 	});
 	v.self.add(v.demo_lbl);
 	
-	//Login with email test
+//#### Login with email test ####
 	v.lBox_v = Ti.UI.createView({
 		top:10,
 		layout: 'vertical',
@@ -88,8 +86,7 @@ function initUI(v){
 	v.lBox_v.add(v.currentUserBtn);
 	v.self.add(v.lBox_v);
 	
-	
-	//#log events box
+//#### log events box ####
 	v.evtBox_v = Ti.UI.createView({
 		top:10,
 		layout: 'vertical',
@@ -97,6 +94,8 @@ function initUI(v){
 		borderColor:'black', borderWidth: 1,
 		borderRadius: 6
 	});
+	v.self.add(v.evtBox_v);	
+	
 	v.eTitle_lbl = Titanium.UI.createLabel({
 		top: 6,
 		text:'-- logEventWithName --',
@@ -130,7 +129,39 @@ function initUI(v){
 		with: Ti.UI.SIZE, height: Ti.UI.SIZE
 	});
 	v.evtBox_v.add(v.logEventBtn);
-	v.self.add(v.evtBox_v);	
+
+
+//#### setUserPropertyString ####
+	v.uPropBox_v = Ti.UI.createView({
+		top:10,
+		layout: 'vertical',
+		width: '90%', height: Ti.UI.SIZE, 
+		borderColor:'black', borderWidth: 1,
+		borderRadius: 6
+	});
+	v.self.add(v.uPropBox_v);	
+	
+	v.uPropTitle_lbl = Titanium.UI.createLabel({
+		top: 6,
+		text:'-- setUserPropertyString --',
+		color:'lightgray',
+		width: Ti.UI.SIZE, height: Ti.UI.SIZE
+	});
+	v.uPropBox_v.add(v.uPropTitle_lbl);
+
+	v.uPropName_f = Ti.UI.createTextField(tFieldProps);
+	v.uPropName_f.hintText = 'Name';
+	v.uPropBox_v.add(v.uPropName_f);
+
+	v.uPropValue_f = Ti.UI.createTextField(tFieldProps);
+	v.uPropValue_f.hintText = 'Value';
+	v.uPropBox_v.add(v.uPropValue_f);	
+	
+	v.setUPropBtn = Ti.UI.createButton({
+		title: 'Set property',
+		with: Ti.UI.SIZE, height: Ti.UI.SIZE
+	});
+	v.uPropBox_v.add(v.setUPropBtn);
 	
 	addEvents(v);
 	return(v);
@@ -146,6 +177,7 @@ function addEvents(v){
 	});
 	
 	v.logEventBtn.addEventListener('click', logEventWithNameCb);
+	v.setUPropBtn.addEventListener('click', setUPropBtnCb);
 }
 
 function createUserWithEmailCb(e){
@@ -212,3 +244,16 @@ function logEventWithNameCb(e){
 	_tFireb.FIRAnalytics.logEventWithName(logParams);
 	alert("Sent Event Data:\n" + JSON.stringify(logParams));
 }
+
+function setUPropBtnCb(e){
+	
+	var name = _v.uPropName_f.value;
+	var value = _v.uPropValue_f.value;
+	var setParams = {
+		'name': name,
+		'value': value
+	}; 
+	_tFireb.FIRAnalytics.setUserPropertyString(setParams);
+	alert("Set user property data:\n" + JSON.stringify(setParams) + " for user:" + JSON.stringify(_tFireb.FIRAuth.currentUser));
+}
+
