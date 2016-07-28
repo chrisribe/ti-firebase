@@ -49,6 +49,8 @@
 		if(strNumber != nil)//if a number was converted from string then not nil
 			[parameters setValue:strNumber forKey:key];//<- update dict to number!
 	}
+	RELEASE_TO_NIL(nFormatter);
+	RELEASE_TO_NIL(keysCopy);
 
  	[FIRAnalytics logEventWithName:name
                         parameters:parameters];

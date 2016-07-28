@@ -7,7 +7,7 @@
  *
  */
 package ti.firebase;
-
+/*
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 
@@ -18,48 +18,32 @@ import org.appcelerator.kroll.common.TiConfig;
 
 @Kroll.module(name="TiFirebase", id="ti.firebase")
 public class TiFirebaseModule extends KrollModule
-{
+// Standard Debugging variables
+private static final String LCAT = "FirebaseModule";
 
-	// Standard Debugging variables
-	private static final String LCAT = "TiFirebaseModule";
-	private static final boolean DBG = TiConfig.LOGD;
+public static boolean debuggable = false;
 
-	// You can define constants with @Kroll.constant, for example:
-	// @Kroll.constant public static final String EXTERNAL_NAME = value;
-
-	public TiFirebaseModule()
-	{
-		super();
-	}
-
-	@Kroll.onAppCreate
-	public static void onAppCreate(TiApplication app)
-	{
-		Log.d(LCAT, "inside onAppCreate");
-		// put module init code that needs to run when the application is created
-	}
-
-	// Methods
-	@Kroll.method
-	public String example()
-	{
-		Log.d(LCAT, "example called");
-		return "hello world";
-	}
-
-	// Properties
-	@Kroll.getProperty
-	public String getExampleProp()
-	{
-		Log.d(LCAT, "get example property");
-		return "hello world";
-	}
-
-
-	@Kroll.setProperty
-	public void setExampleProp(String value) {
-		Log.d(LCAT, "set example property: " + value);
-	}
-
+public TiFirebaseModule() {
+	super();
 }
 
+@Kroll.onAppCreate
+public static void onAppCreate(TiApplication app) {
+	Log.d(LCAT, "inside onAppCreate");
+	// put module init code that needs to run when the application is
+	// created
+}
+
+@Kroll.method
+public boolean configure() {
+	try{
+		//final Fabric fabric = new Fabric.Builder(TiApplication.getInstance()).kits(new Crashlytics()).debuggable(debuggable).build();
+		//Fabric.with(fabric);
+		return true;
+	}catch(Exception exp){
+		Log.e(LCAT, exp.getMessage());
+		return false;
+	}
+}
+}
+*/

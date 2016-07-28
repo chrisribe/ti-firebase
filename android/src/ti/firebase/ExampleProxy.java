@@ -7,7 +7,7 @@
  *
  */
 package ti.firebase;
-
+/*
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
@@ -102,3 +102,4 @@ public class ExampleProxy extends TiViewProxy
 	    Log.d(LCAT, "Tried setting module message to: " + message);
 	}
 }
+*/

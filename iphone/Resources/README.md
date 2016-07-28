@@ -1,8 +1,9 @@
 ======== Module project notes ===========
 
-Place your GoogleService-Info.plist in this folder and rebuild the project in order to link this module to your project.
+Place your GoogleService-Info.plist in this folder, it will be copied to the product directory, where the firebase sdk will read and connect to your app url.
 
-===================
+
+======== Module project notes ===========
 
 Files in this folder are copied directly into the compiled product directory
 when the iOS app is compiled:
