@@ -39,6 +39,10 @@
 		C03476301D4A56AB00D66573 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03476281D4A56AB00D66573 /* GoogleNetworkingUtilities.framework */; };
 		C03476311D4A56AB00D66573 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03476291D4A56AB00D66573 /* GoogleSymbolUtilities.framework */; };
 		C03476321D4A56AB00D66573 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C034762A1D4A56AB00D66573 /* GoogleUtilities.framework */; };
+		C09A98B51D4FC6FF0045791E /* TiFirebaseMessagingModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C09A98B41D4FC6FF0045791E /* TiFirebaseMessagingModule.m */; };
+		C09A98B71D4FC7110045791E /* TiFirebaseMessagingModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C09A98B61D4FC7110045791E /* TiFirebaseMessagingModule.h */; };
+		C09A98BA1D4FC9DF0045791E /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09A98B81D4FC9DF0045791E /* FirebaseMessaging.framework */; };
+		C09A98BB1D4FC9DF0045791E /* GoogleIPhoneUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09A98B91D4FC9DF0045791E /* GoogleIPhoneUtilities.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		C03476281D4A56AB00D66573 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = platform/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		C03476291D4A56AB00D66573 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = platform/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		C034762A1D4A56AB00D66573 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = platform/GoogleUtilities.framework; sourceTree = "<group>"; };
+		C09A98B41D4FC6FF0045791E /* TiFirebaseMessagingModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseMessagingModule.m; path = Classes/TiFirebaseMessagingModule.m; sourceTree = "<group>"; };
+		C09A98B61D4FC7110045791E /* TiFirebaseMessagingModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiFirebaseMessagingModule.h; sourceTree = "<group>"; };
+		C09A98B81D4FC9DF0045791E /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
+		C09A98B91D4FC9DF0045791E /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
 		C0EFC6361D2C22CA005C7B1C /* module.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = module.xcconfig; sourceTree = "<group>"; };
 		C0EFC6371D2C22CA005C7B1C /* manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTiFirebase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiFirebase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +96,8 @@
 				C034762F1D4A56AB00D66573 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				C034762E1D4A56AB00D66573 /* FirebaseInstanceID.framework in Frameworks */,
 				C034762D1D4A56AB00D66573 /* FirebaseAuth.framework in Frameworks */,
+				C09A98BA1D4FC9DF0045791E /* FirebaseMessaging.framework in Frameworks */,
+				C09A98BB1D4FC9DF0045791E /* GoogleIPhoneUtilities.framework in Frameworks */,
 				C03476321D4A56AB00D66573 /* GoogleUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +127,8 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C09A98B81D4FC9DF0045791E /* FirebaseMessaging.framework */,
+				C09A98B91D4FC9DF0045791E /* GoogleIPhoneUtilities.framework */,
 				C03476221D4A56AB00D66573 /* Firebase.h */,
 				C03476231D4A56AB00D66573 /* module.modulemap */,
 				C03476241D4A56AB00D66573 /* FirebaseAnalytics.framework */,
@@ -136,6 +148,8 @@
 			children = (
 				C030487C1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h */,
 				C030487D1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m */,
+				C09A98B61D4FC7110045791E /* TiFirebaseMessagingModule.h */,
+				C09A98B41D4FC6FF0045791E /* TiFirebaseMessagingModule.m */,
 				C03048781D33F60E005D8A19 /* TiFirebaseAuthModule.h */,
 				C03048791D33F60E005D8A19 /* TiFirebaseAuthModule.m */,
 				24DE9E0F11C5FE74003F90F6 /* TiFirebaseModuleAssets.h */,
@@ -164,6 +178,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09A98B71D4FC7110045791E /* TiFirebaseMessagingModule.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* TiFirebase_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* TiFirebaseModule.h in Headers */,
 				C030487A1D33F60E005D8A19 /* TiFirebaseAuthModule.h in Headers */,
@@ -243,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09A98B51D4FC6FF0045791E /* TiFirebaseMessagingModule.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* TiFirebaseModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* TiFirebaseModuleAssets.m in Sources */,
 				C030487F1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m in Sources */,
@@ -272,6 +288,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Resources",
 					"$(PROJECT_DIR)/platform",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -315,6 +332,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Resources",
 					"$(PROJECT_DIR)/platform",
+					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
