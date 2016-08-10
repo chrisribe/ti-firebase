@@ -79,9 +79,15 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @param email The email address for the user.
     @param completion Optionally; the block invoked when the user profile change has finished.
         Invoked asynchronously on the main thread in the future.
-    @remarks May fail with a @c FIRAuthErrorCodeCredentialTooOld error code. In this case you should
-        call @c FIRUser.reauthenticateWithCredential:completion: before re-invoking
-        @c FIRUser.updateEmail:completion:.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeEmailAlreadyInUse - Indicates the email is already in use by another
+            account.
+        - @c FIRAuthErrorCodeInvalidEmail - Indicates the email address is malformed.
+        - @c FIRAuthErrorCodeRequiresRecentLogin - Updating a user’s email is a security sensitive
+            operation that requires a recent login from the user. This error indicates the user has
+            not signed in recently enough. To resolve, reauthenticate the user by invoking
+            reauthenticateWithCredential:completion: on FIRUser.
+        - See @c FIRAuthErrors for a list of error codes that are common to all FIRUser operations.
  */
 - (void)updateEmail:(NSString *)email completion:(nullable FIRUserProfileChangeCallback)completion;
 
@@ -90,9 +96,17 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @param password The new password for the user.
     @param completion Optionally; the block invoked when the user profile change has finished.
         Invoked asynchronously on the main thread in the future.
-    @remarks May fail with a @c FIRAuthErrorCodeCredentialTooOld error code. In this case you should
-        call @c FIRUser.reauthenticateWithCredential:completion: before re-invoking
-        @c FIRUser.updateEmail:completion:.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeOperationNotAllowed - Indicates the administrator disabled sign in with
+            the specified identity provider.
+        - @c FIRAuthErrorCodeRequiresRecentLogin - Updating a user’s password is a security
+            sensitive operation that requires a recent login from the user. This error indicates the
+            user has not signed in recently enough. To resolve, reauthenticate the user by invoking
+            reauthenticateWithCredential:completion: on FIRUser.
+        - @c FIRAuthErrorCodeWeakPassword - Indicates an attempt to set a password that is
+            considered too weak. The NSLocalizedFailureReasonErrorKey field in the NSError.userInfo
+            dictionary object will contain more detailed explanation that can be shown to the user.
+        - See @c FIRAuthErrors for a list of error codes that are common to all FIRUser operations.
  */
 - (void)updatePassword:(NSString *)password
             completion:(nullable FIRUserProfileChangeCallback)completion;
@@ -112,6 +126,8 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @remarks May fail with a @c FIRAuthErrorCodeCredentialTooOld error code. In this case you should
         call @c FIRUser.reauthenticateWithCredential:completion: before re-invoking
         @c FIRUser.updateEmail:completion:.
+    @remarks Possible error codes:
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)reloadWithCompletion:(nullable FIRUserProfileChangeCallback)completion;
 
@@ -125,6 +141,25 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @remarks If the user associated with the supplied credential is different from the current user,
         or if the validation of the supplied credentials fails; an error is returned and the current
         user remains signed in.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeInvalidCredential Indicates the supplied credential is invalid. This
+                could happen if it has expired or it is malformed.
+        - @c FIRAuthErrorCodeOperationNotAllowed Indicates that accounts with the identity provider
+            represented by the credential are not enabled. Enable them in the Auth section of the
+            Firebase console.
+        - @c FIRAuthErrorCodeEmailAlreadyInUse Indicates the email asserted by the credential
+            (e.g. the email in a Facebook access token) is already in use by an existing account,
+            that cannot be authenticated with this method. Call fetchProvidersForEmail for
+            this user’s email and then prompt them to sign in with any of the sign-in providers
+            returned. This error will only be thrown if the “One account per email address”
+            setting is enabled in the Firebase console, under Auth settings. - Please note that the
+            error code raised in this specific situation may not be the same on Web and Android.
+        - @c FIRAuthErrorCodeUserDisabled Indicates the user's account is disabled.
+        - @c FIRAuthErrorCodeWrongPassword Indicates the user attempted reauthentication with an
+            incorrect password, if credential is of the type EmailPasswordAuthCredential.
+        - @c FIRAuthErrorCodeUserMismatch Indicates that an attempt was made to reauthenticate with
+            a user which is not the current user.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)reauthenticateWithCredential:(FIRAuthCredential *)credential
                           completion:(nullable FIRUserProfileChangeCallback)completion;
@@ -133,6 +168,8 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @brief Retrieves the Firebase authentication token, possibly refreshing it if it has expired.
     @param completion Optionally; the block invoked when the token is available. Invoked
         asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)getTokenWithCompletion:(nullable FIRAuthTokenCallback)completion;
 
@@ -144,6 +181,8 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
         asynchronously on the main thread in the future.
     @remarks The authentication token will be refreshed (by making a network request) if it has
         expired, or if @c forceRefresh is YES.
+    @remarks Possible error codes:
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)getTokenForcingRefresh:(BOOL)forceRefresh
                     completion:(nullable FIRAuthTokenCallback)completion;
@@ -153,6 +192,17 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @param credential The credential for the identity provider.
     @param completion Optionally; the block invoked when the unlinking is complete, or fails.
         Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeProviderAlreadyLinked - Indicates an attempt to link a provider of a
+            type already linked to this account.
+        - @c FIRAuthErrorCodeCredentialAlreadyInUse - Indicates an attempt to link with a credential
+            that has already been linked with a different Firebase account.
+        - @c FIRAuthErrorCodeOperationNotAllowed - Indicates that accounts with the identity
+            provider represented by the credential are not enabled. Enable them in the Auth section
+            of the Firebase console.
+        - This method may also return error codes associated with updateEmail:completion: and
+            updatePassword:completion: on FIRUser.
+        - See @c FIRAuthErrors for a list of error codes that are common to all FIRUser operations.
  */
 - (void)linkWithCredential:(FIRAuthCredential *)credential
                 completion:(nullable FIRAuthResultCallback)completion;
@@ -162,6 +212,14 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @param provider The provider ID of the provider to unlink.
     @param completion Optionally; the block invoked when the unlinking is complete, or fails.
         Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeNoSuchProvider - Indicates an attempt to unlink a provider that is not
+            linked to the account.
+        - @c FIRAuthErrorCodeRequiresRecentLogin - Updating email is a security sensitive operation
+            that requires a recent login from the user. This error indicates the user has not signed
+            in recently enough. To resolve, reauthenticate the user by invoking
+            reauthenticateWithCredential:completion: on FIRUser.
+        - See @c FIRAuthErrors for a list of error codes that are common to all FIRUser operations.
  */
 - (void)unlinkFromProvider:(NSString *)provider
                 completion:(nullable FIRAuthResultCallback)completion;
@@ -170,6 +228,9 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @brief Initiates email verification for the user.
     @param completion Optionally; the block invoked when the request to send an email verification
         is complete, or fails. Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeUserNotFound - Indicates the user account was not found.
+        - See @c FIRAuthErrors for a list of error codes that are common to all FIRUser operations.
  */
 - (void)sendEmailVerificationWithCompletion:(nullable FIRSendEmailVerificationCallback)completion;
 
@@ -177,6 +238,12 @@ typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error);
     @brief Deletes the user account (also signs out the user, if this was the current user).
     @param completion Optionally; the block invoked when the request to delete the account is
         complete, or fails. Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeRequiresRecentLogin - Updating email is a security sensitive operation
+            that requires a recent login from the user. This error indicates the user has not signed
+            in recently enough. To resolve, reauthenticate the user by invoking
+            reauthenticateWithCredential:completion: on FIRUser.
+        - See @c FIRAuthErrors for a list of error codes that are common to all FIRUser operations.
  */
 - (void)deleteWithCompletion:(nullable FIRUserProfileChangeCallback)completion;
 

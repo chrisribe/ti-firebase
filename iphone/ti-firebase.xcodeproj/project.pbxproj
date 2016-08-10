@@ -39,6 +39,7 @@
 		C03476301D4A56AB00D66573 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03476281D4A56AB00D66573 /* GoogleNetworkingUtilities.framework */; };
 		C03476311D4A56AB00D66573 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03476291D4A56AB00D66573 /* GoogleSymbolUtilities.framework */; };
 		C03476321D4A56AB00D66573 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C034762A1D4A56AB00D66573 /* GoogleUtilities.framework */; };
+		C0B97FF01D5BA87A00ABE7CA /* GoogleParsingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B97FEF1D5BA87A00ABE7CA /* GoogleParsingUtilities.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		C03476281D4A56AB00D66573 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = platform/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
 		C03476291D4A56AB00D66573 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = platform/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		C034762A1D4A56AB00D66573 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = platform/GoogleUtilities.framework; sourceTree = "<group>"; };
+		C0B97FEF1D5BA87A00ABE7CA /* GoogleParsingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleParsingUtilities.framework; path = platform/GoogleParsingUtilities.framework; sourceTree = "<group>"; };
 		C0EFC6361D2C22CA005C7B1C /* module.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = module.xcconfig; sourceTree = "<group>"; };
 		C0EFC6371D2C22CA005C7B1C /* manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTiFirebase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiFirebase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 			files = (
 				C03476311D4A56AB00D66573 /* GoogleSymbolUtilities.framework in Frameworks */,
 				C03476301D4A56AB00D66573 /* GoogleNetworkingUtilities.framework in Frameworks */,
+				C0B97FF01D5BA87A00ABE7CA /* GoogleParsingUtilities.framework in Frameworks */,
 				C034762C1D4A56AB00D66573 /* FirebaseAnalytics.framework in Frameworks */,
 				C034762F1D4A56AB00D66573 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				C034762E1D4A56AB00D66573 /* FirebaseInstanceID.framework in Frameworks */,
@@ -117,6 +120,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0B97FEF1D5BA87A00ABE7CA /* GoogleParsingUtilities.framework */,
 				C03476221D4A56AB00D66573 /* Firebase.h */,
 				C03476231D4A56AB00D66573 /* module.modulemap */,
 				C03476241D4A56AB00D66573 /* FirebaseAnalytics.framework */,

@@ -103,6 +103,9 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @param completion Optionally; a block which is invoked when the list of providers for the
         specified email address is ready or an error was encountered. Invoked asynchronously on the
         main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeInvalidEmail - Indicates the email address is malformed.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)fetchProvidersForEmail:(NSString *)email
                     completion:(nullable FIRProviderQueryCallback)completion;
@@ -113,6 +116,13 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @param password The user's password.
     @param completion Optionally; a block which is invoked when the sign in flow finishes, or is
         canceled. Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeOperationNotAllowed Indicates that email and password accounts are not
+            enabled. Enable them in the Auth section of the Firebase console.
+        - @c FIRAuthErrorCodeUserDisabled Indicates the user's account is disabled.
+        - @c FIRAuthErrorCodeWrongPassword Indicates the user attempted sign in with an incorrect
+            password.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)signInWithEmail:(NSString *)email
                password:(NSString *)password
@@ -122,8 +132,25 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @brief Asynchronously signs in to Firebase with the given 3rd-party credentials (e.g. a Facebook
         login Access Token, a Google ID Token/Access Token pair, etc.)
     @param credential The credential supplied by the IdP.
-    @param completion Optionally; a block which is invoked when the sign in finishes, or is
+    @param completion Optionally; a block which is invoked when the sign in flow finishes, or is
         canceled. Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeInvalidCredential Indicates the supplied credential is invalid. This
+            could happen if it has expired or it is malformed.
+        - @c FIRAuthErrorCodeOperationNotAllowed Indicates that accounts with the identity provider
+            represented by the credential are not enabled. Enable them in the Auth section of the
+            Firebase console.
+        - @c FIRAuthErrorCodeEmailAlreadyInUse Indicates the email asserted by the credential
+            (e.g. the email in a Facebook access token) is already in use by an existing account,
+            that cannot be authenticated with this sign-in method. Call fetchProvidersForEmail for
+            this user’s email and then prompt them to sign in with any of the sign-in providers
+            returned. This error will only be thrown if the “One account per email address”
+            setting is enabled in the Firebase console, under Auth settings. - Please note that the
+            error code raised in this specific situation may not be the same on Web and Android.
+        - @c FIRAuthErrorCodeUserDisabled Indicates the user's account is disabled.
+        - @c FIRAuthErrorCodeWrongPassword Indicates the user attempted sign in with a incorrect
+            password, if credential is of the type EmailPasswordAuthCredential.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)signInWithCredential:(FIRAuthCredential *)credential
                   completion:(nullable FIRAuthResultCallback)completion;
@@ -134,6 +161,10 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
         canceled. Invoked asynchronously on the main thread in the future.
     @remarks If there is already an anonymous user signed in, that user will be returned instead.
         If there is any other existing user signed in, that user will be signed out.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeOperationNotAllowed Indicates that anonymous accounts are not enabled.
+            Enable them in the Auth section of the Firebase console.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)signInAnonymouslyWithCompletion:(nullable FIRAuthResultCallback)completion;
 
@@ -142,6 +173,11 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @param token A self-signed custom auth token.
     @param completion Optionally; a block which is invoked when the sign in finishes, or is
         canceled. Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeInvalidCustomToken Indicates a validation error with the custom token.
+        - @c FIRAuthErrorCodeCustomTokenMismatch Indicates the service account and the API key
+            belong to different projects.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)signInWithCustomToken:(NSString *)token
                    completion:(nullable FIRAuthResultCallback)completion;
@@ -150,8 +186,19 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @brief Creates and, on success, signs in a user with the given email address and password.
     @param email The user's email address.
     @param password The user's desired password.
-    @param completion Optionally; a block which is invoked when the sign up finishes, or is
+    @param completion Optionally; a block which is invoked when the sign up flow finishes, or is
         canceled. Invoked asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeInvalidEmail - Indicates the email address is malformed.
+        - @c FIRAuthErrorCodeEmailAlreadyInUse Indicates the email used to attempt sign up
+            already exists. Call fetchProvidersForEmail to check which sign-in mechanisms the user
+            used, and prompt the user to sign in with one of those.
+        - @c FIRAuthErrorCodeOperationNotAllowed Indicates that email and password accounts are not
+            enabled. Enable them in the Auth section of the Firebase console.
+        - @c FIRAuthErrorCodeWeakPassword Indicates an attempt to set a password that is considered
+            too weak. The NSLocalizedFailureReasonErrorKey field in the NSError.userInfo dictionary
+            object will contain more detailed explanation that can be shown to the user.
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)createUserWithEmail:(NSString *)email
                    password:(NSString *)password
@@ -162,6 +209,8 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @param email The email address of the user.
     @param completion Optionally; a block which is invoked when the request finishes. Invoked
         asynchronously on the main thread in the future.
+    @remarks Possible error codes:
+        - See @c FIRAuthErrors for a list of error codes that are common to all API methods.
  */
 - (void)sendPasswordResetWithEmail:(NSString *)email
                         completion:(nullable FIRSendPasswordResetCallback)completion;
@@ -171,6 +220,10 @@ typedef void (^FIRSendPasswordResetCallback)(NSError *_Nullable error);
     @param error Optionally; if an error occurs, upon return contains an NSError object that
         describes the problem; is nil otherwise.
     @return @YES when the sign out request was successful. @NO otherwise.
+    @remarks Possible error codes:
+        - @c FIRAuthErrorCodeKeychainError Indicates an error occurred when accessing the keychain.
+            The @c NSLocalizedFailureReasonErrorKey field in the @c NSError.userInfo dictionary
+            will contain more information about the error encountered.
  */
 - (BOOL)signOut:(NSError *_Nullable *_Nullable)error;
 
