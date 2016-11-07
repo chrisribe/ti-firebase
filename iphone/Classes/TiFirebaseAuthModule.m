@@ -123,15 +123,14 @@
     ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
     ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
 	
-
-	NSError *error;
-	BOOL status = [[FIRAuth auth] signOut:&error];//Note: odd signOut seems to always return true!?
+	NSError *authError;
+	BOOL status = [[FIRAuth auth] signOut:&authError];//Note: odd signOut seems to always return true!?
 	
     if(status && successCallback) {
 		// Sign-out succeeded
 		[successCallback call:@[@"success"] thisObject:nil];
 	} else if(errorCallback) {
-		[errorCallback call:@[[TiFirebaseModule dictionaryFromError:error]] thisObject:nil];
+		[errorCallback call:@[[TiFirebaseModule dictionaryFromError:authError]] thisObject:nil];
 	}
 }
 
