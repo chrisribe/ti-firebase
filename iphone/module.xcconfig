@@ -28,5 +28,4 @@
 //Note: Do not use the MODULE_VERSION name tag, it is reserved or something and breaks builds if set.
 MODULE_VER=1.1.0
 FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/ti.firebase/$(MODULE_VER)/platform "~/Library/Application\ Support/Titanium/modules/iphone/ti.firebase/$(MODULE_VER)/platform/ios"
-OTHER_LDFLAGS=$(inherited) -framework FirebaseAnalytics -framework FirebaseInstanceID -framework GoogleInterchangeUtilities -framework GoogleSymbolUtilities -framework GoogleUtilities -framework FirebaseAuth -framework GoogleNetworkingUtilities -framework GoogleParsingUtilities
-
+OTHER_LDFLAGS=$(inherited) -framework FirebaseAnalytics -framework FirebaseInstanceID -framework FirebaseAuth -framework FirebaseCore -framework GoogleInterchangeUtilities -framework GoogleSymbolUtilities -framework GoogleToolboxForMac -framework GTMSessionFetcher
