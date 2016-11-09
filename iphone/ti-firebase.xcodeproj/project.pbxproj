@@ -27,19 +27,19 @@
 		24DE9E1111C5FE74003F90F6 /* TiFirebaseModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* TiFirebaseModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* TiFirebaseModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* TiFirebase_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */; };
-		C00BD36C1DD1008C00C29F1A /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD3661DD1008C00C29F1A /* FirebaseAnalytics.framework */; };
-		C00BD36D1DD1008C00C29F1A /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD3671DD1008C00C29F1A /* FirebaseCore.framework */; };
-		C00BD36E1DD1008C00C29F1A /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD3681DD1008C00C29F1A /* FirebaseInstanceID.framework */; };
-		C00BD36F1DD1008C00C29F1A /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD3691DD1008C00C29F1A /* GoogleInterchangeUtilities.framework */; };
-		C00BD3701DD1008C00C29F1A /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD36A1DD1008C00C29F1A /* GoogleSymbolUtilities.framework */; };
-		C00BD3711DD1008C00C29F1A /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD36B1DD1008C00C29F1A /* GoogleToolboxForMac.framework */; };
-		C00BD3741DD1009900C29F1A /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD3721DD1009900C29F1A /* FirebaseAuth.framework */; };
-		C00BD3751DD1009900C29F1A /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00BD3731DD1009900C29F1A /* GTMSessionFetcher.framework */; };
-		C00BD3771DD100A400C29F1A /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = C00BD3761DD100A400C29F1A /* Firebase.h */; };
 		C030487A1D33F60E005D8A19 /* TiFirebaseAuthModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C03048781D33F60E005D8A19 /* TiFirebaseAuthModule.h */; };
 		C030487B1D33F60E005D8A19 /* TiFirebaseAuthModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C03048791D33F60E005D8A19 /* TiFirebaseAuthModule.m */; };
 		C030487E1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C030487C1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h */; };
 		C030487F1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C030487D1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m */; };
+		C0560D4B1DD36FD9000243BC /* Firebase.h in Headers */ = {isa = PBXBuildFile; fileRef = C0560D411DD36FD9000243BC /* Firebase.h */; };
+		C0560D4C1DD36FD9000243BC /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D421DD36FD9000243BC /* FirebaseAnalytics.framework */; };
+		C0560D4D1DD36FD9000243BC /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D431DD36FD9000243BC /* FirebaseAuth.framework */; };
+		C0560D4E1DD36FD9000243BC /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D441DD36FD9000243BC /* FirebaseCore.framework */; };
+		C0560D4F1DD36FD9000243BC /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D451DD36FD9000243BC /* FirebaseInstanceID.framework */; };
+		C0560D501DD36FD9000243BC /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D461DD36FD9000243BC /* GoogleInterchangeUtilities.framework */; };
+		C0560D511DD36FD9000243BC /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D471DD36FD9000243BC /* GoogleSymbolUtilities.framework */; };
+		C0560D521DD36FD9000243BC /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D481DD36FD9000243BC /* GoogleToolboxForMac.framework */; };
+		C0560D531DD36FD9000243BC /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D491DD36FD9000243BC /* GTMSessionFetcher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,20 +60,20 @@
 		24DE9E1011C5FE74003F90F6 /* TiFirebaseModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseModuleAssets.m; path = Classes/TiFirebaseModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TiFirebase_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiFirebase_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C00BD3661DD1008C00C29F1A /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		C00BD3671DD1008C00C29F1A /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
-		C00BD3681DD1008C00C29F1A /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		C00BD3691DD1008C00C29F1A /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		C00BD36A1DD1008C00C29F1A /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		C00BD36B1DD1008C00C29F1A /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
-		C00BD3721DD1009900C29F1A /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
-		C00BD3731DD1009900C29F1A /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
-		C00BD3761DD100A400C29F1A /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
-		C00BD3781DD100B500C29F1A /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		C03048781D33F60E005D8A19 /* TiFirebaseAuthModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiFirebaseAuthModule.h; path = Classes/TiFirebaseAuthModule.h; sourceTree = "<group>"; };
 		C03048791D33F60E005D8A19 /* TiFirebaseAuthModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseAuthModule.m; path = Classes/TiFirebaseAuthModule.m; sourceTree = "<group>"; };
 		C030487C1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiFirebaseAnalyticsModule.h; path = Classes/TiFirebaseAnalyticsModule.h; sourceTree = "<group>"; };
 		C030487D1D33F690005D8A19 /* TiFirebaseAnalyticsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiFirebaseAnalyticsModule.m; path = Classes/TiFirebaseAnalyticsModule.m; sourceTree = "<group>"; };
+		C0560D411DD36FD9000243BC /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = platform/Firebase.h; sourceTree = "<group>"; };
+		C0560D421DD36FD9000243BC /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = platform/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		C0560D431DD36FD9000243BC /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = platform/FirebaseAuth.framework; sourceTree = "<group>"; };
+		C0560D441DD36FD9000243BC /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = platform/FirebaseCore.framework; sourceTree = "<group>"; };
+		C0560D451DD36FD9000243BC /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = platform/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		C0560D461DD36FD9000243BC /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = platform/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		C0560D471DD36FD9000243BC /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = platform/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		C0560D481DD36FD9000243BC /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = platform/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		C0560D491DD36FD9000243BC /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = platform/GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		C0560D4A1DD36FD9000243BC /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = platform/module.modulemap; sourceTree = "<group>"; };
 		C0EFC6361D2C22CA005C7B1C /* module.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = module.xcconfig; sourceTree = "<group>"; };
 		C0EFC6371D2C22CA005C7B1C /* manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTiFirebase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiFirebase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,14 +84,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C00BD36D1DD1008C00C29F1A /* FirebaseCore.framework in Frameworks */,
-				C00BD3741DD1009900C29F1A /* FirebaseAuth.framework in Frameworks */,
-				C00BD36F1DD1008C00C29F1A /* GoogleInterchangeUtilities.framework in Frameworks */,
-				C00BD3701DD1008C00C29F1A /* GoogleSymbolUtilities.framework in Frameworks */,
-				C00BD3751DD1009900C29F1A /* GTMSessionFetcher.framework in Frameworks */,
-				C00BD3711DD1008C00C29F1A /* GoogleToolboxForMac.framework in Frameworks */,
-				C00BD36E1DD1008C00C29F1A /* FirebaseInstanceID.framework in Frameworks */,
-				C00BD36C1DD1008C00C29F1A /* FirebaseAnalytics.framework in Frameworks */,
+				C0560D521DD36FD9000243BC /* GoogleToolboxForMac.framework in Frameworks */,
+				C0560D511DD36FD9000243BC /* GoogleSymbolUtilities.framework in Frameworks */,
+				C0560D4C1DD36FD9000243BC /* FirebaseAnalytics.framework in Frameworks */,
+				C0560D4D1DD36FD9000243BC /* FirebaseAuth.framework in Frameworks */,
+				C0560D531DD36FD9000243BC /* GTMSessionFetcher.framework in Frameworks */,
+				C0560D4E1DD36FD9000243BC /* FirebaseCore.framework in Frameworks */,
+				C0560D4F1DD36FD9000243BC /* FirebaseInstanceID.framework in Frameworks */,
+				C0560D501DD36FD9000243BC /* GoogleInterchangeUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,16 +120,16 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C00BD3781DD100B500C29F1A /* module.modulemap */,
-				C00BD3761DD100A400C29F1A /* Firebase.h */,
-				C00BD3721DD1009900C29F1A /* FirebaseAuth.framework */,
-				C00BD3731DD1009900C29F1A /* GTMSessionFetcher.framework */,
-				C00BD3661DD1008C00C29F1A /* FirebaseAnalytics.framework */,
-				C00BD3671DD1008C00C29F1A /* FirebaseCore.framework */,
-				C00BD3681DD1008C00C29F1A /* FirebaseInstanceID.framework */,
-				C00BD3691DD1008C00C29F1A /* GoogleInterchangeUtilities.framework */,
-				C00BD36A1DD1008C00C29F1A /* GoogleSymbolUtilities.framework */,
-				C00BD36B1DD1008C00C29F1A /* GoogleToolboxForMac.framework */,
+				C0560D411DD36FD9000243BC /* Firebase.h */,
+				C0560D421DD36FD9000243BC /* FirebaseAnalytics.framework */,
+				C0560D431DD36FD9000243BC /* FirebaseAuth.framework */,
+				C0560D441DD36FD9000243BC /* FirebaseCore.framework */,
+				C0560D451DD36FD9000243BC /* FirebaseInstanceID.framework */,
+				C0560D461DD36FD9000243BC /* GoogleInterchangeUtilities.framework */,
+				C0560D471DD36FD9000243BC /* GoogleSymbolUtilities.framework */,
+				C0560D481DD36FD9000243BC /* GoogleToolboxForMac.framework */,
+				C0560D491DD36FD9000243BC /* GTMSessionFetcher.framework */,
+				C0560D4A1DD36FD9000243BC /* module.modulemap */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -171,7 +171,7 @@
 				AA747D9F0F9514B9006C5449 /* TiFirebase_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* TiFirebaseModule.h in Headers */,
 				C030487A1D33F60E005D8A19 /* TiFirebaseAuthModule.h in Headers */,
-				C00BD3771DD100A400C29F1A /* Firebase.h in Headers */,
+				C0560D4B1DD36FD9000243BC /* Firebase.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* TiFirebaseModuleAssets.h in Headers */,
 				C030487E1D33F690005D8A19 /* TiFirebaseAnalyticsModule.h in Headers */,
 			);
