@@ -256,4 +256,3 @@ function setUPropBtnCb(e){
 	_tFireb.FIRAnalytics.setUserPropertyString(setParams);
 	alert("Set user property data:\n" + JSON.stringify(setParams) + " for user:" + JSON.stringify(_tFireb.FIRAuth.currentUser));
 }
-

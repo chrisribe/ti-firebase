@@ -1,5 +1,5 @@
 # ti-firebase
-Appcelerator / Titanium module project to build and use the google firebase SDK
+Appcelerator / Titanium module project to build and use the google firebase SDK 3.9.0
 
 How to use it:
 ```
@@ -62,3 +62,17 @@ _tFireb.FIRAnalytics.logEventWithName({
 	}
 });
 ```
+
+**setUserPropertyString**
+```
+_tFireb.FIRAnalytics.setUserPropertyString({
+	'name': ‘value_name’,
+	'value': ‘the_value’
+});
+```
+
+# Firebase Debug Mode
+
+Firebase is setup in this module so that if you build your app in debug mode you will see debug logs from Firebase.
+The required argument passed on launch “-FIRAnalyticsDebugEnabled” is set in this module’s Xcode project product scheme. The scheme is set to “share” it’s settings with the project including the module.
+
