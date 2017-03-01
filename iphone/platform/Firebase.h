@@ -13,7 +13,7 @@
     #import <FirebaseAuth/FirebaseAuth.h>
   #endif
 
-  #if __has_include(<FirebaseCrash/FirebaseCrash./Users/cribe/Documents/github-projects/ti-firebase/iphone/ti-firebase.xcodeprojh>)
+  #if __has_include(<FirebaseCrash/FirebaseCrash.h>)
     #import <FirebaseCrash/FirebaseCrash.h>
   #endif
 

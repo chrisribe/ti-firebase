@@ -36,8 +36,6 @@
 		C0560D4D1DD36FD9000243BC /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D431DD36FD9000243BC /* FirebaseAuth.framework */; };
 		C0560D4E1DD36FD9000243BC /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D441DD36FD9000243BC /* FirebaseCore.framework */; };
 		C0560D4F1DD36FD9000243BC /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D451DD36FD9000243BC /* FirebaseInstanceID.framework */; };
-		C0560D501DD36FD9000243BC /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D461DD36FD9000243BC /* GoogleInterchangeUtilities.framework */; };
-		C0560D511DD36FD9000243BC /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D471DD36FD9000243BC /* GoogleSymbolUtilities.framework */; };
 		C0560D521DD36FD9000243BC /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D481DD36FD9000243BC /* GoogleToolboxForMac.framework */; };
 		C0560D531DD36FD9000243BC /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0560D491DD36FD9000243BC /* GTMSessionFetcher.framework */; };
 /* End PBXBuildFile section */
@@ -69,8 +67,6 @@
 		C0560D431DD36FD9000243BC /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = platform/FirebaseAuth.framework; sourceTree = "<group>"; };
 		C0560D441DD36FD9000243BC /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = platform/FirebaseCore.framework; sourceTree = "<group>"; };
 		C0560D451DD36FD9000243BC /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = platform/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		C0560D461DD36FD9000243BC /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = platform/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		C0560D471DD36FD9000243BC /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = platform/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		C0560D481DD36FD9000243BC /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = platform/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		C0560D491DD36FD9000243BC /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = platform/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		C0560D4A1DD36FD9000243BC /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = platform/module.modulemap; sourceTree = "<group>"; };
@@ -85,13 +81,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0560D521DD36FD9000243BC /* GoogleToolboxForMac.framework in Frameworks */,
-				C0560D511DD36FD9000243BC /* GoogleSymbolUtilities.framework in Frameworks */,
 				C0560D4C1DD36FD9000243BC /* FirebaseAnalytics.framework in Frameworks */,
 				C0560D4D1DD36FD9000243BC /* FirebaseAuth.framework in Frameworks */,
 				C0560D531DD36FD9000243BC /* GTMSessionFetcher.framework in Frameworks */,
 				C0560D4E1DD36FD9000243BC /* FirebaseCore.framework in Frameworks */,
 				C0560D4F1DD36FD9000243BC /* FirebaseInstanceID.framework in Frameworks */,
-				C0560D501DD36FD9000243BC /* GoogleInterchangeUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +119,6 @@
 				C0560D431DD36FD9000243BC /* FirebaseAuth.framework */,
 				C0560D441DD36FD9000243BC /* FirebaseCore.framework */,
 				C0560D451DD36FD9000243BC /* FirebaseInstanceID.framework */,
-				C0560D461DD36FD9000243BC /* GoogleInterchangeUtilities.framework */,
-				C0560D471DD36FD9000243BC /* GoogleSymbolUtilities.framework */,
 				C0560D481DD36FD9000243BC /* GoogleToolboxForMac.framework */,
 				C0560D491DD36FD9000243BC /* GTMSessionFetcher.framework */,
 				C0560D4A1DD36FD9000243BC /* module.modulemap */,
