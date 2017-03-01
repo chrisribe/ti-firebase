@@ -1,73 +1,76 @@
-# ti-firebase
-Appcelerator / Titanium module project to build and use the google firebase SDK 3.9.0
+# Ti.Firebase
+Appcelerator Titanium module to build and use the google Firebase SDK 3.9.0.
 
 How to use it:
-```
-//Firebase init (init from GoogleService-Info.plist in ressources folder)
-var _tFireb = require('ti.firebase');
-_tFireb.configure();
+```js
+// Firebase init
+// iOS: Initialize from GoogleService-Info.plist in "Resources" (Classic) or "app/platform/ios" (Alloy) folder
+var Firebase = require('ti.firebase');
+Firebase.configure();
 ```
 
 **createUserWithEmail**
-```
-var email = _v.email_f.value;
-var pwd = _v.pwd_f.value;
-_tFireb.FIRAuth.createUserWithEmail({
-	'email': email,
-	'password': pwd,
-	'success': function(data){
+```js
+var email = myEmailField.getValue();
+var pwd = myPasswordField.getValue();
+
+Firebase.FIRAuth.createUserWithEmail({
+	email: email,
+	password: pwd,
+	success: function(data) {
 		alert(JSON.stringify(data));
 	},
-	'error': function(data){
+	error: function(data) {
 		alert(JSON.stringify(data));
 	}
 });
 ```
 
 **signInWithEmail**
-```
-var email = _v.email_f.value;
-var pwd = _v.pwd_f.value;
-_tFireb.FIRAuth.signInWithEmail({
-	'email': email,
-	'password': pwd,
-	'success': function(data){
+```js
+var email = myEmailField.getValue();
+var pwd = myPasswordField.getValue();
+
+Firebase.FIRAuth.signInWithEmail({
+	email: email,
+	password: pwd,
+	success: function(data) {
 		alert(JSON.stringify(data));
 	},
-	'error': function(data){
+	error: function(data) {
 		alert(JSON.stringify(data));
 	}
 });
 ```
 
 **signOut**
-```
-_tFireb.FIRAuth.signOut({
-	'success': function(data){	
+```js
+Firebase.FIRAuth.signOut({
+	success: function(data) {	
 		alert(JSON.stringify(data));
 	},
-	'error': function(data){
+	error: function(data) {
 		alert(JSON.stringify(data));
 	}
 });
 ```
 
 **logEventWithName**
-```
-_tFireb.FIRAnalytics.logEventWithName({
-	‘name’: ‘xyz’,
-	‘parameters’:{
-		‘VALUE’: 0.99,
-		‘CURRENCY’: ‘EUR’
+```js
+Firebase.FIRAnalytics.logEventWithName({
+	name: 'xyz',
+	parameters: {
+		'VALUE': 0.99,
+		'CURRENCY': 'EUR'
 	}
 });
 ```
 
 **setUserPropertyString**
-```
-_tFireb.FIRAnalytics.setUserPropertyString({
-	'name': ‘value_name’,
-	'value': ‘the_value’
+```js
+Firebase.FIRAnalytics.setUserPropertyString({
+	name: 'value_name',
+	value: 'the_value'
 });
 ```
 
