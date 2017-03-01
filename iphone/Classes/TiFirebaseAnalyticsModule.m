@@ -13,19 +13,6 @@
 
 @implementation TiFirebaseAnalyticsModule
 
--(void)dealloc
-{
-	[super dealloc];
-}
-
-#pragma mark Internal Memory Management
-
--(void)didReceiveMemoryWarning:(NSNotification*)notification
-{
-	[super didReceiveMemoryWarning:notification];
-}
-
-
 #pragma Public APIs
 
 - (void)logEventWithName:(id)args
@@ -39,20 +26,22 @@
     ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
     ENSURE_ARG_OR_NIL_FOR_KEY(parameters, args, @"parameters", NSMutableDictionary);
 
-	//Convert numerical parameters to NSNumber (firebase expects numbers not string numbers)
-	NSNumberFormatter *nFormatter = [[NSNumberFormatter alloc] init];
-	nFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // Convert numerical parameters to NSNumber (firebase expects numbers not string numbers)
+    NSNumberFormatter *nFormatter = [[NSNumberFormatter alloc] init];
+    nFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 
-	NSArray *keysCopy = [[parameters allKeys] copy];
-	for (NSString *key in keysCopy) {
-		NSNumber *strNumber = [nFormatter numberFromString:[parameters valueForKey:key]];
-		if(strNumber != nil)//if a number was converted from string then not nil
-			[parameters setValue:strNumber forKey:key];//<- update dict to number!
-	}
-	RELEASE_TO_NIL(nFormatter);
-	RELEASE_TO_NIL(keysCopy);
-
- 	[FIRAnalytics logEventWithName:name
+    NSArray *keysCopy = [[parameters allKeys] copy];
+    
+    for (NSString *key in keysCopy) {
+        NSNumber *strNumber = [nFormatter numberFromString:[parameters valueForKey:key]];
+        
+        // If a number was converted from string then not nil
+        if (strNumber != nil) {
+            [parameters setValue:strNumber forKey:key];
+        }
+    }
+    
+    [FIRAnalytics logEventWithName:name
                         parameters:parameters];
 }
 
@@ -67,7 +56,31 @@
     ENSURE_ARG_OR_NIL_FOR_KEY(value, args, @"value", NSString);
     ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
     
-	[FIRAnalytics setUserPropertyString:value
+    [FIRAnalytics setUserPropertyString:value
                                 forName:name];
 }
+
+- (void)setUserID:(id)value
+{
+    ENSURE_UI_THREAD(setUserID, value);
+    ENSURE_SINGLE_ARG(value, NSString);
+    
+    [FIRAnalytics setUserID:[TiUtils stringValue:value]];
+}
+
+- (void)setScreenName:(id)args
+{
+    ENSURE_UI_THREAD(setScreenName, args);
+    ENSURE_SINGLE_ARG(args, NSDictionary);
+    
+    NSString *screenName;
+    NSString *screenClass;
+    
+    ENSURE_ARG_OR_NIL_FOR_KEY(screenName, args, @"screenName", NSString);
+    ENSURE_ARG_OR_NIL_FOR_KEY(screenClass, args, @"screenClass", NSString);
+    
+    [FIRAnalytics setScreenName:screenName
+                    screenClass:screenClass];
+}
+
 @end

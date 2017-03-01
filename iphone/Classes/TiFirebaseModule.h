@@ -10,6 +10,8 @@
 #import "TiFirebaseAuthModule.h"
 #import "TiFirebaseAnalyticsModule.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TiFirebaseModule : TiModule
 {
 	TiFirebaseAuthModule *firAuth;
@@ -28,14 +30,14 @@
 *
 *  @param unused The proxy-argument handler (remains unused)
 */
--(TiFirebaseAuthModule *_Nonnull)FIRAuth;
+- (TiFirebaseAuthModule *_Nonnull)FIRAuth;
 
 /**
 *  Manages analytics for Firebase apps
 *
 *  @param unused The proxy-argument handler (remains unused)
 */
--(TiFirebaseAnalyticsModule*_Nonnull)FIRAnalytics;
+- (TiFirebaseAnalyticsModule*_Nonnull)FIRAnalytics;
 
 
 /**
@@ -54,6 +56,8 @@
  *
  *  @return The dictionary containing the extracted user-infos
  */
-+ (NSDictionary *_Nullable)dictionaryFromUser:(FIRUser *_Nullable) user;
++ (NSDictionary * _Nullable)dictionaryFromUser:(FIRUser *_Nullable) user;
 
 @end
+
+NS_ASSUME_NONNULL_END

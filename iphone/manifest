@@ -2,13 +2,13 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 
-version: 1.2.0
+version: 1.3.0
 apiversion: 2
 architectures: armv7 arm64 i386 x86_64
 description: ti-firebase
 author: cribe
-license: Specify your license
-copyright: Copyright (c) 2016 by Your Company
+license: Apache 2
+copyright: Copyright (c) 2016-Present by ChrisRibe
 
 # these should not be edited
 name: ti-firebase

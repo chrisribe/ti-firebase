@@ -13,19 +13,6 @@
 
 @implementation TiFirebaseAuthModule
 
--(void)dealloc
-{
-	[super dealloc];
-}
-
-#pragma mark Internal Memory Management
-
--(void)didReceiveMemoryWarning:(NSNotification*)notification
-{
-	[super didReceiveMemoryWarning:notification];
-}
-
-
 #pragma Public APIs
 
 - (void)logEventWithName:(id)args
@@ -38,8 +25,8 @@
     
     ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
     ENSURE_ARG_OR_NIL_FOR_KEY(parameters, args, @"parameter", NSDictionary);
-	
- 	[FIRAnalytics logEventWithName:name
+
+    [FIRAnalytics logEventWithName:name
                         parameters:parameters];
 }
 
@@ -54,7 +41,7 @@
     ENSURE_ARG_OR_NIL_FOR_KEY(value, args, @"value", NSString);
     ENSURE_ARG_OR_NIL_FOR_KEY(name, args, @"name", NSString);
     
-	[FIRAnalytics setUserPropertyString:value
+    [FIRAnalytics setUserPropertyString:value
                                 forName:name];
 }
 
@@ -73,12 +60,12 @@
     ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
     ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
 
-	[[FIRAuth auth] createUserWithEmail:email
+    [[FIRAuth auth] createUserWithEmail:email
                                password:password
                              completion:^(FIRUser *_Nullable user, NSError *_Nullable error) {
-                                 if(errorCallback && error) {
-                                        [errorCallback call:@[[TiFirebaseModule dictionaryFromError:error]] thisObject:nil];
-                                 } else if(successCallback) {
+                                 if (errorCallback && error) {
+                                     [errorCallback call:@[[TiFirebaseModule dictionaryFromError:error]] thisObject:nil];
+                                 } else if (successCallback) {
                                      [successCallback call:@[[TiFirebaseModule dictionaryFromUser:user]] thisObject:nil];
                                  }
                              }];
@@ -100,15 +87,14 @@
     ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
     ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
 
-	[[FIRAuth auth] signInWithEmail:email
+    [[FIRAuth auth] signInWithEmail:email
                            password: password
                          completion:^(FIRUser *user, NSError *error) {
-
-                            if(errorCallback && error) {
-                                [errorCallback call:@[[TiFirebaseModule dictionaryFromError:error]] thisObject:nil];
-                            } else if(successCallback) {
-                                [successCallback call:@[[TiFirebaseModule dictionaryFromUser:user]] thisObject:nil];
-                            }
+                             if (errorCallback && error) {
+                                 [errorCallback call:@[[TiFirebaseModule dictionaryFromError:error]] thisObject:nil];
+                             } else if (successCallback) {
+                                 [successCallback call:@[[TiFirebaseModule dictionaryFromUser:user]] thisObject:nil];
+                             }
                          }];
 }
 
@@ -126,24 +112,39 @@
 	NSError *authError;
 	BOOL status = [[FIRAuth auth] signOut:&authError];//Note: odd signOut seems to always return true!?
 	
-    if(status && successCallback) {
-		// Sign-out succeeded
-		[successCallback call:@[@"success"] thisObject:nil];
-	} else if(errorCallback) {
-		[errorCallback call:@[[TiFirebaseModule dictionaryFromError:authError]] thisObject:nil];
-	}
+    if (status && successCallback) {
+        // Sign-out succeeded
+        [successCallback call:@[@"success"] thisObject:nil];
+    } else if (errorCallback) {
+        [errorCallback call:@[[TiFirebaseModule dictionaryFromError:authError]] thisObject:nil];
+    }
 }
 
--(NSDictionary *)currentUser{
+- (void)sendPasswordResetWithEmail:(id)args
+{
+    ENSURE_UI_THREAD(sendPasswordResetWithEmail, args);
+    ENSURE_SINGLE_ARG(args, NSDictionary);
+    
+    KrollCallback *successCallback;
+    KrollCallback *errorCallback;
+    NSString *email;
+    
+    ENSURE_ARG_OR_NIL_FOR_KEY(successCallback, args, @"success", KrollCallback);
+    ENSURE_ARG_OR_NIL_FOR_KEY(errorCallback, args, @"error", KrollCallback);
+    ENSURE_ARG_FOR_KEY(email, args, @"email", NSString);
 
-	FIRUser *user = [FIRAuth auth].currentUser;
-	if (user != nil) {
-	  // User is signed in.
-	  return [TiFirebaseModule dictionaryFromUser:user];
-	} else {
-	  // No user is signed in.
-	  return nil;
-	}
+    [[FIRAuth auth] sendPasswordResetWithEmail:email
+                                    completion:^(NSError *error) {
+                                        if (errorCallback && error) {
+                                            [errorCallback call:@[@{@"success": NUMBOOL(NO)}] thisObject:nil];
+                                        } else if (successCallback) {
+                                            [successCallback call:@[@{@"success": NUMBOOL(YES)}] thisObject:nil];
+                                        }
+                                    }];
+}
 
+- (NSDictionary *)currentUser
+{
+    return [TiFirebaseModule dictionaryFromUser:[[FIRAuth auth] currentUser]];
 }
 @end
