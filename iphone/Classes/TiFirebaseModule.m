@@ -29,35 +29,7 @@
 - (void)startup
 {
 	[super startup];
-	NSLog(@"[INFO] %@ loaded",self);
-}
--(void)shutdown:(id)sender
-{
-	// this method is called when the module is being unloaded
-	// typically this is during shutdown. make sure you don't do too
-	// much processing here or the app will be quit forceably
-
-	// you *must* call the superclass
-	[super shutdown:sender];
-}
-
-#pragma mark Cleanup
--(void)dealloc
-{
-	// release any resources that have been retained by the module
-    RELEASE_TO_NIL(firAuth);
-	RELEASE_TO_NIL(firAnalytics);
-	[super dealloc];
-}
-
-#pragma mark Internal Memory Management
--(void)didReceiveMemoryWarning:(NSNotification*)notification
-{
-	// optionally release any resources that can be dynamically
-	// reloaded once memory is available - such as caches
-    RELEASE_TO_NIL(firAuth);
-	RELEASE_TO_NIL(firAnalytics);
-	[super didReceiveMemoryWarning:notification];
+	NSLog(@"[DEBUG] %@ loaded",self);
 }
 
 #pragma Public APIs (FIRApp Class entry point)
@@ -67,24 +39,26 @@
     [FIRApp configure];
 }
 
+- (id)projectID
+{
+    return [[FIROptions defaultOptions] projectID];
+}
 
 #pragma Public APIs (FIRAuth Class entry point)
 
--(TiFirebaseAuthModule*)FIRAuth
+- (TiFirebaseAuthModule*)FIRAuth
 {
-    if (firAuth==nil)
-    {
-        return [[[TiFirebaseAuthModule alloc] _initWithPageContext:[self executionContext]] autorelease];
+    if (firAuth == nil) {
+        return [[TiFirebaseAuthModule alloc] _initWithPageContext:[self executionContext]];
     }
     return firAuth;
 }
 
 #pragma Public APIs (FIRAnalytics Class entry point)
--(TiFirebaseAnalyticsModule*)FIRAnalytics
+- (TiFirebaseAnalyticsModule*)FIRAnalytics
 {
-    if (firAnalytics==nil)
-    {
-        return [[[TiFirebaseAnalyticsModule alloc] _initWithPageContext:[self executionContext]] autorelease];
+    if (firAnalytics == nil) {
+        return [[TiFirebaseAnalyticsModule alloc] _initWithPageContext:[self executionContext]];
     }
     return firAnalytics;
 }
@@ -104,7 +78,7 @@
     };
 }
 
-+ (NSDictionary *_Nullable)dictionaryFromUser:(FIRUser *_Nullable) user
++ (NSDictionary * _Nullable)dictionaryFromUser:(FIRUser *_Nullable) user
 {
     if (!user) {
         return nil;
@@ -114,8 +88,8 @@
         @"email": [user email],
         @"providerID": [user providerID],
         @"uid": [user uid],// Provider-specific UID
-		@"photoURL": ([user photoURL].absoluteString ?: [NSNull null]),
-		@"displayName": ([user displayName] ?: [NSNull null])
+		@"photoURL": NULL_IF_NIL([[user photoURL] absoluteString]),
+		@"displayName": NULL_IF_NIL([user displayName])
     };
 }
 

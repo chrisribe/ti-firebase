@@ -6,7 +6,7 @@
 /// 500 different types of Events per app and you can associate up to 25 unique parameters with each
 /// Event type. Some common events are suggested below, but you may also choose to specify custom
 /// Event types that are associated with your specific app. Each event type is identified by a
-/// unique name. Event names can be up to 32 characters long, may only contain alphanumeric
+/// unique name. Event names can be up to 40 characters long, may only contain alphanumeric
 /// characters and underscores ("_"), and must start with an alphabetic character. The "firebase_"
 /// prefix is reserved and should not be used.
 
@@ -82,6 +82,21 @@ static NSString *const kFIREventAppOpen = @"app_open";
 ///     <li>@c kFIRParameterTravelClass (NSString) (optional) for travel bookings</li>
 /// </ul>
 static NSString *const kFIREventBeginCheckout = @"begin_checkout";
+
+/// Campaign Detail event. Log this event to supply the referral details of a re-engagement
+/// campaign. Note: you must supply at least one of the required parameters kFIRParameterSource,
+/// kFIRParameterMedium or kFIRParameterCampaign. Params:
+///
+/// <ul>
+///     <li>@c kFIRParameterSource (NSString)</li>
+///     <li>@c kFIRParameterMedium (NSString)</li>
+///     <li>@c kFIRParameterCampaign (NSString)</li>
+///     <li>@c kFIRParameterTerm (NSString) (optional)</li>
+///     <li>@c kFIRParameterContent (NSString) (optional)</li>
+///     <li>@c kFIRParameterAdNetworkClickID (NSString) (optional)</li>
+///     <li>@c kFIRParameterCP1 (NSString) (optional)</li>
+/// </ul>
+static NSString *const kFIREventCampaignDetails = @"campaign_details";
 
 /// Earn Virtual Currency event. This event tracks the awarding of virtual currency in your app. Log
 /// this along with @c kFIREventSpendVirtualCurrency to better understand your virtual economy.

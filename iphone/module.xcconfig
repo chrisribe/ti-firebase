@@ -26,6 +26,6 @@
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 //
 //Note: Do not use the MODULE_VERSION name tag, it is reserved or something and breaks builds if set.
-MODULE_VER=1.2.0
+MODULE_VER=1.3.0
 FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/ti.firebase/$(MODULE_VER)/platform "~/Library/Application\ Support/Titanium/modules/iphone/ti.firebase/$(MODULE_VER)/platform/ios"
 OTHER_LDFLAGS=$(inherited) -framework FirebaseAnalytics -framework FirebaseInstanceID -framework FirebaseAuth -framework FirebaseCore -framework GoogleInterchangeUtilities -framework GoogleSymbolUtilities -framework GoogleToolboxForMac -framework GTMSessionFetcher

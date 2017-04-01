@@ -4,6 +4,8 @@
 #import "FIRParameterNames.h"
 #import "FIRUserPropertyNames.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /// The top level Firebase Analytics singleton that provides methods for logging events and setting
 /// user properties. See <a href="http://goo.gl/gz8SLz">the developer guides</a> for general
 /// information on using Firebase Analytics in your apps.
@@ -30,18 +32,18 @@
 ///     <li>user_engagement</li>
 /// </ul>
 ///
-/// @param name The name of the event. Should contain 1 to 32 alphanumeric characters or
+/// @param name The name of the event. Should contain 1 to 40 alphanumeric characters or
 ///     underscores. The name must start with an alphabetic character. Some event names are
 ///     reserved. See FIREventNames.h for the list of reserved event names. The "firebase_" prefix
 ///     is reserved and should not be used. Note that event names are case-sensitive and that
 ///     logging two events whose names differ only in case will result in two distinct events.
 /// @param parameters The dictionary of event parameters. Passing nil indicates that the event has
-///     no parameters. Parameter names can be up to 24 characters long and must start with an
+///     no parameters. Parameter names can be up to 40 characters long and must start with an
 ///     alphabetic character and contain only alphanumeric characters and underscores. Only NSString
 ///     and NSNumber (signed 64-bit integer and 64-bit floating-point number) parameter types are
-///     supported. NSString parameter values can be up to 36 characters long. The "firebase_" prefix
-///     is reserved and should not be used for parameter names.
-+ (void)logEventWithName:(nonnull NSString *)name
+///     supported. NSString parameter values can be up to 100 characters long. The "firebase_"
+///     prefix is reserved and should not be used for parameter names.
++ (void)logEventWithName:(NSString *)name
               parameters:(nullable NSDictionary<NSString *, NSObject *> *)parameters;
 
 /// Sets a user property to a given value. Up to 25 user property names are supported. Once set,
@@ -59,7 +61,7 @@
 /// @param name The name of the user property to set. Should contain 1 to 24 alphanumeric characters
 ///     or underscores and must start with an alphabetic character. The "firebase_" prefix is
 ///     reserved and should not be used for user property names.
-+ (void)setUserPropertyString:(nullable NSString *)value forName:(nonnull NSString *)name;
++ (void)setUserPropertyString:(nullable NSString *)value forName:(NSString *)name;
 
 /// Sets the user ID property. This feature must be used in accordance with
 /// <a href="https://www.google.com/policies/privacy">Google's Privacy Policy</a>
@@ -84,12 +86,17 @@
 /// The screen name and screen class remain in effect until the current UIViewController changes or
 /// a new call to setScreenName:screenClass: is made.
 ///
-/// @param screenName The name of the current screen. Should contain 1 to 36 characters. Set to nil
+/// @param screenName The name of the current screen. Should contain 1 to 100 characters. Set to nil
 ///     to clear the current screen name.
-/// @param screenClassOverride The name of the screen class. Should contain 1 to 36 characters. By
+/// @param screenClassOverride The name of the screen class. Should contain 1 to 100 characters. By
 ///     default this is the class name of the current UIViewController. Set to nil to revert to the
 ///     default class name.
 + (void)setScreenName:(nullable NSString *)screenName
           screenClass:(nullable NSString *)screenClassOverride;
 
+/// The unique ID for this instance of the application.
++ (NSString *)appInstanceID;
+
 @end
+
+NS_ASSUME_NONNULL_END

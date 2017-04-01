@@ -74,6 +74,11 @@ Firebase.FIRAnalytics.setUserPropertyString({
 });
 ```
 
+**projectID**
+```js
+Firebase.getProjectID();
+```
+
 # Firebase Debug Mode
 
 Firebase is setup in this module so that if you build your app in debug mode you will see debug logs from Firebase.
