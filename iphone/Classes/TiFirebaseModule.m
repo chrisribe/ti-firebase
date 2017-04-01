@@ -39,6 +39,10 @@
     [FIRApp configure];
 }
 
+- (id)projectID
+{
+    return [[FIROptions defaultOptions] projectID];
+}
 
 #pragma Public APIs (FIRAuth Class entry point)
 
