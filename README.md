@@ -1,5 +1,5 @@
 # Ti.Firebase
-Appcelerator Titanium module to build and use the google Firebase SDK 3.9.0.
+Appcelerator Titanium module to build and use the Google Firebase SDK 3.15.0.
 
 How to use it:
 ```js
