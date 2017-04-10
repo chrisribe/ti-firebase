@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <! -- Present in all applications -->
+    <string name="google_app_id" translatable="false">1:281852802951:android:217872f43f252bb5</string>
+    <! -- Present in applications with the appropriate services configured -->
+    <string name="gcm_defaultSenderId" translatable="false">281852802951</string>
+    <string name="default_web_client_id" translatable="false">281852802951-csl64l8s7ijgi1rh43399apkinr9qv0o.apps.googleusercontent.com</string>
+    <string name="ga_trackingId" translatable="false"></string>
+    <string name="firebase_database_url" translatable="false">https://fire-demo-49cb5.firebaseio.com</string>
+    <string name="google_api_key" translatable="false">AIzaSyAJy17pR9iKtXdumFvCvMfNAoNWEBT2dLc</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAJy17pR9iKtXdumFvCvMfNAoNWEBT2dLc</string>
+</resources>

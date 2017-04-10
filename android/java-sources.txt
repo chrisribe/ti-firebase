@@ -1,3 +1,2 @@
-"/Users/cribe/Documents/github-projects/ti-firebase/android/build/generated/java/ti/firebase/TiFirebaseBootstrap.java"
 "/Users/cribe/Documents/github-projects/ti-firebase/android/src/ti/firebase/ExampleProxy.java"
 "/Users/cribe/Documents/github-projects/ti-firebase/android/src/ti/firebase/TiFirebaseModule.java"
